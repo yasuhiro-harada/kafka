@@ -9,7 +9,7 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.batch.core.JobExecutionListener;
+//import org.springframework.batch.core.JobExecutionListener;
 
 @Configuration
 @EnableBatchProcessing
@@ -36,14 +36,14 @@ public class BatchTasklet {
 	public Job job(Step step1, Step step2) throws Exception {
 		return jobBuilderFactory.get("job")
 				.incrementer(new RunIdIncrementer())
-				.listener(listener())
+				//.listener(listener())
 				.start(step1)
 				.next(step2)
 				.build();
 	}
-	@Bean
-	public JobExecutionListener listener() {
-		return new JobListener();
-	}
+	// @Bean
+	// public JobExecutionListener listener() {
+	// 	//return new JobListener();
+	// }
 
 }
